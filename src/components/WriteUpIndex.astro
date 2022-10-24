@@ -1,0 +1,10 @@
+---
+const writeups = await Astro.glob('../pages/writeup/*.md');
+---
+
+<ul>
+    
+    {writeups.map((w) => (
+        <li><a href={w.url}>{w.frontmatter.title}</a></li>
+    ))}
+</ul>

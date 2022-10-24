@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThreeD from "../components/ThreeD.astro";
+import Accolades from '../components/Accolades.astro';
+import Members from '../components/Members.astro';
+---
+
+<Layout title="Calming Tea Friends :)">
+	<main>
+		<h1>Calming Tea Friends.</h1>
+		<h3>Chalmers calmest ctf team</h3>
+		<ThreeD id="ThreeD"></ThreeD>
+		<h3><a href="/writeup">Writeups</a></h3>
+		<h3><a href="https://ctftime.org/team/186527">ctftime</a></h3>
+		<Accolades></Accolades>
+		<Members></Members>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+		color: whitesmoke;
+	}
+	h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	h3 {
+		font-size: 1rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	#ThreeD {
+		width: 100%;
+	}
+</style>

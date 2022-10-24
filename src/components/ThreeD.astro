@@ -1,0 +1,63 @@
+<div>
+    <canvas id="scene"></canvas>
+    <script>
+        import * as THREE from "three";
+        import {GLTFLoader} from "./GLTFLoader.js";
+        import {DRACOLoader} from "./DRACOLoader.js";
+
+        const target = document.getElementById("scene") as HTMLCanvasElement;
+
+        const loader  = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+        loader.setDRACOLoader(dracoLoader);
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color( 0x171718 );
+
+        const camera = new THREE.PerspectiveCamera( 40, target.width / target.height, 0.1, 1000 );
+    
+        const renderer = new THREE.WebGLRenderer({canvas : target, antialias : true});
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        //renderer.setSize( target.width, target.height );
+        renderer.shadowMap.enabled = true;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.setPixelRatio( window.devicePixelRatio );
+    
+        loader.load(
+            "/tea.draco",
+            function(gltf:any) {
+                console.log(gltf);
+                scene.add(gltf.scene);
+                let light = new THREE.DirectionalLight(0x606060,1.0);
+                light.position.set(0,10,0)
+                scene.add(light);
+            },
+            undefined,
+            function (error:any) {
+                console.error(error);
+            }
+        )
+    
+        camera.position.z = 4;
+        camera.position.y = 0.8;
+        camera.rotateX(-0.3);
+    
+        function animate() {
+            camera.aspect = target.width / target.height;
+            //renderer.setSize( target.width, target.height );
+
+            requestAnimationFrame( animate );
+            renderer.render( scene, camera );
+            scene.rotateY(0.003)
+        };
+    
+        animate();
+    </script>
+</div>
+<style>
+    #scene {
+        width: 100%;
+        display: block;
+    }
+</style>

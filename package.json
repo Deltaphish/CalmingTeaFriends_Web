@@ -1,0 +1,20 @@
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@types/three": "^0.144.0",
+    "astro": "^1.5.2",
+    "draco3d": "^1.5.3",
+    "three": "^0.145.0",
+    "three-addons": "^1.2.0"
+  }
+}
